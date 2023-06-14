@@ -1,4 +1,7 @@
-# PassGPT
+# PassGPT: Password Modeling and (Guided) Generation with LLMs
+_Javier Rando, Fernando Perez-Cruz and Briland Hitaj_
+
+This repository contains the official implementation of the PassGPT model. For details, see [the paper](https://arxiv.org/abs/2306.01545).
 
 ### Execution
 
