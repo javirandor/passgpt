@@ -81,7 +81,7 @@ if __name__ == "__main__":
     
     data_files = {'train': [args.train_data_path]}
     dataset = load_dataset('text', data_files=data_files)
-    print("Dataset loaded with {} entries".format(len(dataset)))
+    print("Dataset loaded with {} entries".format(len(dataset["train"])))
     
     if args.subsample > 0:
         print("Subsampling dataset to {} random entries".format(args.subsample))
