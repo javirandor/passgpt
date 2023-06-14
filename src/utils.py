@@ -17,16 +17,18 @@ class PasswordDataCollator(DataCollatorForLanguageModeling):
     CustomDataCollator for this task. It modifies the special token mask so that the end of password token is not ignored (should also be predicted).
     """
     def torch_call(self, examples):
-        # Handle dict or lists with proper padding and conversion to tensor.        
-        input_ids = torch.stack([i["input_ids"] for i in examples])
-        attention_mask = torch.stack([i["input_ids"] for i in examples])
-        
-        batch = {"input_ids": input_ids, "attention_mask": attention_mask}
-        
+        # Handle dict or lists with proper padding and conversion to tensor.
+        if isinstance(examples[0], (dict, BatchEncoding)):
+            batch = self.tokenizer.pad(examples, return_tensors="pt", pad_to_multiple_of=self.pad_to_multiple_of)
+        else:
+            batch = {
+                "input_ids": _torch_collate_batch(examples, self.tokenizer, pad_to_multiple_of=self.pad_to_multiple_of)
+            }
+
         special_tokens_mask = batch.pop("special_tokens_mask", None) # Remove if given
         
         # Create custom special tokens mask
-        special_tokens_mask = torch.where((batch['input_ids'] != self.tokenizer.pad_token_id) & (batch['input_ids'] != self.tokenizer.bos_token_id), 0, 1)
+        special_tokens_mask = torch.where(batch['input_ids'] != self.tokenizer.pad_token_id, 0, 1)
         
         if self.mlm:
             batch["input_ids"], batch["labels"] = self.torch_mask_tokens(
@@ -34,12 +36,9 @@ class PasswordDataCollator(DataCollatorForLanguageModeling):
             )
         else:
             labels = batch["input_ids"].clone()
-            
             if self.tokenizer.pad_token_id is not None:
                 labels[labels == self.tokenizer.pad_token_id] = -100
-                
             batch["labels"] = labels
-            
         return batch
 
 
