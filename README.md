@@ -2,7 +2,7 @@
 
 _Javier Rando, Fernando Perez-Cruz and Briland Hitaj_
 
-[![License for code and models](https://img.shields.io/badge/License%20Code%20and%20Models-CC%20By%20NC%204.0-yellow)](https://github.com/javirandor/passbert/blob/main/LICENSE)
+[![License for code and models](https://img.shields.io/badge/Code%20and%20Models%20License-CC%20By%20NC%204.0-yellow)](https://github.com/javirandor/passbert/blob/main/LICENSE)
 
 -----------
 
