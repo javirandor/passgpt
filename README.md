@@ -41,3 +41,12 @@ python src/generate_passwords.py --model_path {MODEL_PATH} --out_path {PASSWORD_
 ```
 Additionally, you can tweak further generation parameters such as `--temperature`, `--top_p` or `--top_k`
 
+## Cite our work
+```
+@article{rando2023passgpt,
+  title={PassGPT: Password Modeling and (Guided) Generation with Large Language Models},
+  author={Rando, Javier and Perez-Cruz, Fernando and Hitaj, Briland},
+  journal={arXiv preprint arXiv:2306.01545},
+  year={2023}
+}
+```
