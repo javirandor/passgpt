@@ -1,5 +1,6 @@
 # PassGPT: Password Modeling and (Guided) Generation with LLMs
 _Javier Rando, Fernando Perez-Cruz and Briland Hitaj_
+[![License](https://img.shields.io/badge/Weight%20Diff%20License-CC%20By%20NC%204.0-yellow)](https://github.com/javirandor/passbert/blob/main/LICENSE)
 
 This repository contains the official implementation of the PassGPT model. For details, see [the paper](https://arxiv.org/abs/2306.01545).
 
