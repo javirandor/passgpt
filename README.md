@@ -22,7 +22,7 @@ PassGPT is a [GPT-2 model](https://huggingface.co/docs/transformers/model_doc/gp
 In our work, we train PassGPT on the [RockYou password leak](https://wiki.skullsecurity.org/index.php/Passwords).
 
 ## Pre-trained models
-Coming soon, we will provide access to the checkpoint of our curated models.
+Contact us if you need access to our pretrained PassGPT models with a brief description of what they will be used for.
 
 ## Train your own model
 
