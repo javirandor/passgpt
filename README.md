@@ -2,7 +2,7 @@
 
 _Javier Rando<sup>1</sup>, Fernando Perez-Cruz<sup>1,2</sup> and Briland Hitaj<sup>3</sup>_
 
-<sup><sup>1</sup>ETH Zurich</sup>, <sup><sup>2</sup>Swiss Data Science Center</sup>, <sup><sup>3</sup>SRI International</sup>
+<sup><sup>1</sup>ETH Zurich, <sup>2</sup>Swiss Data Science Center, <sup>3</sup>SRI International</sup>
 
 [![License for code and models](https://img.shields.io/badge/Code%20and%20Models%20License-CC%20By%20NC%204.0-yellow)](https://github.com/javirandor/passbert/blob/main/LICENSE)
 
