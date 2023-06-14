@@ -123,9 +123,9 @@ if __name__ == "__main__":
         f.write("Number of passwords generated: {}\n".format(num_generated))
         f.write("{} unique passwords generated => {:.2f}%\n".format(num_unique, perc_unique))
         if args.eval_data_path:
-            f.write("{} passwords where found in the test set. {:.2f}% of the test set guessed.\n".format(inter_with_eval, 100*inter_with_eval/len(eval_passwords)))
+            f.write("{} passwords where found in the test set. {:.5f}% of the test set guessed.\n".format(inter_with_eval, 100*inter_with_eval/len(eval_passwords)))
         if args.train_data_path:
-            f.write("{} passwords where found in the training set. {:.2f}% of the train set guessed.\n".format(inter_with_train, 100*inter_with_train/len(train_passwords)))
+            f.write("{} passwords where found in the training set. {:.5f}% of the train set guessed.\n".format(inter_with_train, 100*inter_with_train/len(train_passwords)))
     
     
         
