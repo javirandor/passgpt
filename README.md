@@ -49,20 +49,19 @@ model = GPT2LMHeadModel.from_pretrained("javirandor/passgpt-10characters").eval(
 
 NUM_GENERATIONS = 1
 
-with torch.no_grad():
-  # Generate passwords sampling from the beginning of password token
-  g = model.generate(torch.tensor([[tokenizer.bos_token_id]]).cuda(),
-                    do_sample=True,
-                    num_return_sequences=NUM_GENERATIONS,
-                    max_length=12,
-                    pad_token_id=tokenizer.pad_token_id,
-                    bad_words_ids=[[tokenizer.bos_token_id]])
+# Generate passwords sampling from the beginning of password token
+g = model.generate(torch.tensor([[tokenizer.bos_token_id]]).cuda(),
+                  do_sample=True,
+                  num_return_sequences=NUM_GENERATIONS,
+                  max_length=12,
+                  pad_token_id=tokenizer.pad_token_id,
+                  bad_words_ids=[[tokenizer.bos_token_id]])
 
-  # Remove start of sentence token
-  g = g[:, 1:]
+# Remove start of sentence token
+g = g[:, 1:]
 
-  decoded = tokenizer.batch_decode(g.tolist())
-  decoded_clean = [i.split("</s>")[0] for i in decoded] # Get content before end of password token
+decoded = tokenizer.batch_decode(g.tolist())
+decoded_clean = [i.split("</s>")[0] for i in decoded] # Get content before end of password token
 
 # Print your sampled passwords!
 print(decoded_clean)
