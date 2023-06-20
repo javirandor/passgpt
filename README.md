@@ -51,7 +51,7 @@ model = GPT2LMHeadModel.from_pretrained("javirandor/passgpt-10characters", use_a
 NUM_GENERATIONS = 1
 
 # Generate passwords sampling from the beginning of password token
-g = model.generate(torch.tensor([[tokenizer.bos_token_id]]).cuda(),
+g = model.generate(torch.tensor([[tokenizer.bos_token_id]]),
                   do_sample=True,
                   num_return_sequences=NUM_GENERATIONS,
                   max_length=12,
