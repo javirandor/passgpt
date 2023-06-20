@@ -34,7 +34,8 @@ After this, you can use this simple code to generate `NUM_GENERATIONS` passwords
 from transformers import GPT2LMHeadModel
 from transformers import RobertaTokenizerFast
 
-tokenizer = RobertaTokenizerFast.from_pretrained("javirandor/passgpt-10characters", 
+tokenizer = RobertaTokenizerFast.from_pretrained("javirandor/passgpt-10characters",
+                                                  use_auth_token="YOUR_ACCESS_TOKEN",
                                                   max_len=12,
                                                   padding="max_length", 
                                                   truncation=True,
@@ -45,7 +46,7 @@ tokenizer = RobertaTokenizerFast.from_pretrained("javirandor/passgpt-10character
                                                   pad_token="<pad>",
                                                   truncation_side="right")
 
-model = GPT2LMHeadModel.from_pretrained("javirandor/passgpt-10characters").eval()
+model = GPT2LMHeadModel.from_pretrained("javirandor/passgpt-10characters", use_auth_token="YOUR_ACCESS_TOKEN").eval()
 
 NUM_GENERATIONS = 1
 
