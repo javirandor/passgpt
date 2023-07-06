@@ -21,14 +21,12 @@ PassGPT is a [GPT-2 model](https://huggingface.co/docs/transformers/model_doc/gp
 ## Dataset
 In our work, we train PassGPT on the [RockYou password leak](https://wiki.skullsecurity.org/index.php/Passwords).
 
-## Pre-trained models
-* Model trained on passwords from the RockYou leak with at most 10 characters can be accessed [here](https://huggingface.co/javirandor/passgpt-10characters/). This model was used to compare with previous work in our paper.
-* If you need access to our model pre-trained on passwords with up to 16 characters, please get in touch with me. Include your name, reference to previous work (e.g., Google Scholar or personal website), and a brief summary of the project where PassGPT will be used.
-
 ## Generate passwords using our pre-trained model
-In order to use our model, you will need to first log into HuggingFace and accept the conditions [here](https://huggingface.co/javirandor/passgpt-10characters/). Access to the model is automatically granted. You may also need to [set up an authentication key](https://huggingface.co/docs/hub/security-tokens).
+You can download our pre-trained models from HuggingFace. These are curated versions of the models reported in the original paper. Vocabulary size was reduced and training was optimized. Results are expected to be slightly better.
 
-After this, you can use this simple code to generate `NUM_GENERATIONS` passwords. It can even run on CPU! To scale up your generations, you can use [`generate_passwords.py`](https://github.com/javirandor/passgpt/blob/main/src/generate_passwords.py).
+You can access without limitations PassGPT trained on passwords with at most 10 characters [here](https://huggingface.co/javirandor/passgpt-10characters/). The version trained on passwords with at most 16 characters require approval, and it can be found [here](https://huggingface.co/javirandor/passgpt-16characters/). 
+
+You can then use this simple code to generate `NUM_GENERATIONS` passwords with our pre-trained models. It can even run on CPU! To scale up your generations, you can use [`generate_passwords.py`](https://github.com/javirandor/passgpt/blob/main/src/generate_passwords.py).
 
 ```
 from transformers import GPT2LMHeadModel
