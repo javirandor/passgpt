@@ -24,7 +24,7 @@ In our work, we train PassGPT on the [RockYou password leak](https://wiki.skulls
 ## Generate passwords using our pre-trained model
 You can download our pre-trained models from HuggingFace. These are curated versions of the models reported in the original paper. Vocabulary size was reduced and training was optimized. Results are expected to be slightly better.
 
-You can access without limitations PassGPT trained on passwords with at most 10 characters [here](https://huggingface.co/javirandor/passgpt-10characters/). The version trained on passwords with at most 16 characters require approval, and it can be found [here](https://huggingface.co/javirandor/passgpt-16characters/). 
+You can access without limitations PassGPT trained on passwords with at most 10 characters [here](https://huggingface.co/javirandor/passgpt-10characters/). The version trained on passwords with at most 16 characters requires research approval by our team, and it can be found [here](https://huggingface.co/javirandor/passgpt-16characters/). 
 
 You can then use this simple code to generate `NUM_GENERATIONS` passwords with our pre-trained models. It can even run on CPU! To scale up your generations, you can use [`generate_passwords.py`](https://github.com/javirandor/passgpt/blob/main/src/generate_passwords.py).
 
@@ -33,7 +33,6 @@ from transformers import GPT2LMHeadModel
 from transformers import RobertaTokenizerFast
 
 tokenizer = RobertaTokenizerFast.from_pretrained("javirandor/passgpt-10characters",
-                                                  use_auth_token="YOUR_ACCESS_TOKEN",
                                                   max_len=12,
                                                   padding="max_length", 
                                                   truncation=True,
@@ -44,15 +43,16 @@ tokenizer = RobertaTokenizerFast.from_pretrained("javirandor/passgpt-10character
                                                   pad_token="<pad>",
                                                   truncation_side="right")
 
-model = GPT2LMHeadModel.from_pretrained("javirandor/passgpt-10characters", use_auth_token="YOUR_ACCESS_TOKEN").eval()
+model = GPT2LMHeadModel.from_pretrained("javirandor/passgpt-10characters").eval()
 
 NUM_GENERATIONS = 1
+MAX_CHARS = 10
 
 # Generate passwords sampling from the beginning of password token
 g = model.generate(torch.tensor([[tokenizer.bos_token_id]]),
                   do_sample=True,
                   num_return_sequences=NUM_GENERATIONS,
-                  max_length=12,
+                  max_length=MAX_CHARS+2, # Max length + start and end tokens
                   pad_token_id=tokenizer.pad_token_id,
                   bad_words_ids=[[tokenizer.bos_token_id]])
 
