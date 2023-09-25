@@ -32,8 +32,11 @@ You can then use this simple code to generate `NUM_GENERATIONS` passwords with o
 from transformers import GPT2LMHeadModel
 from transformers import RobertaTokenizerFast
 
+NUM_GENERATIONS = 1
+MAX_CHARS = 10
+
 tokenizer = RobertaTokenizerFast.from_pretrained("javirandor/passgpt-10characters",
-                                                  max_len=12,
+                                                  max_len=MAX_CHARS + 2, # Max length + start and end tokens
                                                   padding="max_length", 
                                                   truncation=True,
                                                   do_lower_case=False,
@@ -44,9 +47,6 @@ tokenizer = RobertaTokenizerFast.from_pretrained("javirandor/passgpt-10character
                                                   truncation_side="right")
 
 model = GPT2LMHeadModel.from_pretrained("javirandor/passgpt-10characters").eval()
-
-NUM_GENERATIONS = 1
-MAX_CHARS = 10
 
 # Generate passwords sampling from the beginning of password token
 g = model.generate(torch.tensor([[tokenizer.bos_token_id]]),
