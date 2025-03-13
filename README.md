@@ -19,7 +19,7 @@ PassGPT is a [GPT-2 model](https://huggingface.co/docs/transformers/model_doc/gp
 * The probability that PassGPT assigns to passwords can be used to enhance existing password strength estimators.
 
 ## Dataset
-In our work, we train PassGPT on the [RockYou password leak](https://wiki.skullsecurity.org/index.php/Passwords).
+In our work, we train PassGPT on the [RockYou password leak](https://www.skullsecurity.org/wiki/Passwords). You can also find the Hotmail dataset [here](https://www.skullsecurity.org/wiki/Passwords) and the LinkedIN dataset [here](https://github.com/brannondorsey/PassGAN/releases/download/data/68_linkedin_found_hash_plain.txt.zip).
 
 ## Generate passwords using our pre-trained model
 You can download our pre-trained models from HuggingFace. These are curated versions of the models reported in the original paper. Vocabulary size was reduced and training was optimized. Results are expected to be slightly better.
