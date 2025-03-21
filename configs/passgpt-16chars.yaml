@@ -21,5 +21,5 @@ training_args:
     overwrite_output_dir: true
     fp16: false
     output_dir: '' # Where to store your checkpoints
-    report_to: "wandb"
+    report_to: "none"
     save_steps: 50000
